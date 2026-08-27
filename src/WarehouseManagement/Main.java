@@ -818,6 +818,20 @@ public class Main {
         return str.substring(0, maxWidth - 3) + "...";
     }
 
+    // Hàm chung tạo hiệu ứng chờ 4 giây với thông báo tùy chỉnh
+    private static void showLoadingDelay(String message) {
+        System.out.print("\n⏳ " + message);
+        for (int i = 0; i < 4; i++) {
+            try {
+                Thread.sleep(1000);
+                System.out.print(".");
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        System.out.println("\n");
+    }
+
     // Hàm xóa console
     private static void clearConsole() {
         try {
@@ -845,31 +859,15 @@ public class Main {
             System.out.println("\n👋 Cảm ơn bạn đã sử dụng hệ thống. Hẹn gặp lại!");
             System.exit(0);
         } else if (response.equalsIgnoreCase("y")) {
-            System.out.print("\n⏳ Đang tải lại menu");
-            for (int i = 0; i < 4; i++) {
-                try {
-                    Thread.sleep(1000);
-                    System.out.print(".");
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
+            showLoadingDelay("Đang tải lại menu");
             clearConsole();
         }
     }
 
     // Hàm tạo độ trễ 4 giây và xóa màn hình console
     private static void executeWithDelayAndClear() {
-        System.out.print("⏳ Đang gọi hàm xử lý");
-        for (int i = 0; i < 4; i++) {
-            try {
-                Thread.sleep(1000);
-                System.out.print(".");
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
-        System.out.println("\n");
+        showLoadingDelay("Đang gọi hàm xử lý");
         clearConsole();
     }
+
 }
