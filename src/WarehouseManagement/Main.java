@@ -41,13 +41,16 @@ public class Main {
 
         int choice = 0;
 
+        // clean everything
         do {
             printMenu();
             System.out.print("👉 Nhập lựa chọn của bạn: ");
             try {
                 choice = Integer.parseInt(sc.nextLine());
                 System.out.println();
-
+                if (choice >= 1 && choice <= 61) {
+                    executeWithDelayAndClear();
+                }
                 switch (choice) {
                     // --- NHÓM 1: QUẢN LÝ SẢN PHẨM CƠ BẢN & TÌM KIẾM ---
                     case 1:
@@ -593,9 +596,10 @@ public class Main {
     }
 
     // ==========================================
-    // IMPLEMENTATION: CHỨC NĂNG SỐ 1
+    // IMPLEMENTATION: CHỨC NĂNG SỐ 2
     // ==========================================
     private static void addNewProductManual() {
+        
     }
 
     private static void updateProductManual() {
